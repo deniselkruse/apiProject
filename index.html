@@ -3,42 +3,54 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BBQ Recipes</title>
+    <title>Recipe Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="index.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>BBQ Recipe Generator</h1>
+    <h1 id="title">What the Fork Should I Make for Dinner?</h1>
 
     <div class="wrapper">
         <div class="controls">
-            <!--Search Form-->
             <form>
                 <p>
-                    <label for="search">Enter a search term: </label>
+                    <label for="search">What are you hungry for? </label> <br>
                     <input type="text" id="search" class="search" required>
                 </p>
                 <p>
-                    <button class="submit">Submit search</button>
+                    <button class="submit">Give Me a Recipe!</button>
+                    <br>
+                    <br>
                 </p>
             </form>
         </div>
-        <!--Results Section-->
-        <!--Results From Request-->
+
         <section>
-            <div class="card mb-3" style="max-width: 540px;">
+            <div class="card mb-3" style="max-width: 900px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
                         <img src="" class="card-img" id="card-image" alt="">
+                        <br><br>
+                        <h2 id="ingr"></h2>
+                        <ol id="ingredients"></ol>
                     </div>
-                    <div class="col-md-8">
+
+                    <div class="col-md">
                         <div class="card-body">
+
                             <h5 class="card-title" id="cardTitle"></h5>
-                            <p class="card-text" id="cardText"></p>
+
+                            <h2 id="dir"></h2>
+                            <ol id="recipe"></ol>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
