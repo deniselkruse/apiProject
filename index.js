@@ -1,5 +1,5 @@
 const baseURL = 'https://api.spoonacular.com/recipes/complexSearch';
-const key = '2dbc75257fac4190bf31c59b6f2d347c';
+const key = 'd664d2fb9a9f4cd5bc0b614cab3f62c0';
 let url;
 
 const searchTerm = document.querySelector('.search');
@@ -35,7 +35,7 @@ function displayRecipe(json) {
     if (recipeInfo.length === 0) {
         console.log("No Results");
     } else {
-        for (let i = 0; i < recipeInfo.length; i++) {
+        for (let i = 0; i < Math.floor(Math.random() * recipeInfo.length); i++) {
             
             // Math.floor(Math.random() * recipeInfo.length);
 
