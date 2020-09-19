@@ -36,19 +36,15 @@ function displayRecipe(json) {
         console.log("No Results");
     } else {
         for (let i = 0; i < Math.floor(Math.random() * recipeInfo.length); i++) {
-            
-            // Math.floor(Math.random() * recipeInfo.length);
-
-            let row = document.getElementsByClassName('row no-gutters');
 
             let card = document.getElementsByClassName('card mb-3');
+            let row = document.getElementsByClassName('row no-gutters');
+            let cardBody = document.getElementsByClassName('card-body');
 
             let img = document.getElementById("card-image");
             img.src = json.results[i].image;
             // console.log(json.results[1].image);
             // console.log(img);
-
-            let cardBody = document.getElementsByClassName('card-body');
 
             let cardTitle = document.getElementById("cardTitle");
             cardTitle.innerText = json.results[i].title;
