@@ -35,45 +35,55 @@ function displayRecipe(json) {
     if (recipeInfo.length === 0) {
         console.log("No Results");
     } else {
-        for (let i = 0; i < Math.floor(Math.random() * recipeInfo.length); i++) {
 
-            let card = document.getElementsByClassName('card mb-3');
-            let row = document.getElementsByClassName('row no-gutters');
-            let cardBody = document.getElementsByClassName('card-body');
+        const i = (Math.floor(Math.random() * recipeInfo.length + 1));
 
-            let img = document.getElementById("card-image");
-            img.src = json.results[i].image;
-            // console.log(json.results[1].image);
-            // console.log(img);
+        let card = document.getElementsByClassName('card mb-3');
+        let row = document.getElementsByClassName('row no-gutters');
+        let cardBody = document.getElementsByClassName('card-body');
 
-            let cardTitle = document.getElementById("cardTitle");
-            cardTitle.innerText = json.results[i].title;
-            // console.log(json.results[1].title);
+        let img = document.getElementById("card-image");
+        img.src = json.results[i].image;
+        // console.log(json.results[1].image);
+        // console.log(img);
 
-            directions = json.results[i].analyzedInstructions[0].steps;
-            // console.log(directions);
+        let cardTitle = document.getElementById("cardTitle");
+        cardTitle.innerText = json.results[i].title;
+        // console.log(json.results[1].title);
 
-            directions.forEach(element => {
-                console.log(element.step);
-                let direction = document.createElement('li');
-                direction.innerText = element.step;
-                recipe.appendChild(direction);
-            });
+        directions = json.results[i].analyzedInstructions[0].steps;
+        // console.log(directions);
 
-            components = json.results[i].analyzedInstructions[0].steps[i].ingredients;
+        directions.forEach(element => {
+            console.log(element.step);
+            let direction = document.createElement('li');
+            direction.innerText = element.step;
+            recipe.appendChild(direction);
+        });
+
+        let components = [];
+
+        for (const instruction of json.results[i].analyzedInstructions[0].steps) {
             // console.log(components);
 
-            components.forEach(ingr => {
-                console.log(ingr.name);
-                let ingredientName = document.createElement('li');
-                ingredientName.innerText = ingr.name;
-                ingredientList.appendChild(ingredientName);
-            });
-
-            document.getElementById('ingr').innerHTML = 'Ingredients';
-
-            document.getElementById('dir').innerHTML = 'Directions';
+            for (const ingredient of instruction.ingredients) {
+                if (!components.includes(ingredient.name)) {
+                    components.push(ingredient.name);
+                }
+            }
         }
+
+        components.forEach(ingr => {
+            console.log(ingr);
+            let ingredientName = document.createElement('li');
+            ingredientName.innerText = ingr;
+            ingredientList.appendChild(ingredientName);
+        });
+
+        document.getElementById('ingr').innerHTML = 'Ingredients';
+
+        document.getElementById('dir').innerHTML = 'Directions';
     }
 }
+
 
